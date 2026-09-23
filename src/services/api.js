@@ -35,3 +35,30 @@ export const fetchTransactions = async () => {
     if (!response.ok) throw new Error('Failed to fetch transactions');
     return response.json();
 };
+
+export const fetchCustomerAccounts = async (customerId) => {
+    const response = await fetch(`${API_URL}/accounts/customer/${customerId}`);
+    if (!response.ok) throw new Error('Failed to fetch customer accounts');
+    return response.json();
+};
+
+export const fetchAccountStatements = async (accountId) => {
+    const response = await fetch(`${API_URL}/transactions/account/${accountId}`);
+    if (!response.ok) throw new Error('Failed to fetch account statements');
+    return response.json();
+};
+
+export const makeTransfer = async (transferData) => {
+    const response = await fetch(`${API_URL}/transactions/transfer`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(transferData)
+    });
+    
+    if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(errorText || 'Failed to make transfer');
+    }
+    
+    return response.json();
+};
