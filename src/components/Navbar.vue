@@ -11,6 +11,12 @@ defineProps({
     </div>
     <div class="navbar-menu">
       <button 
+        :class="{ active: currentView === 'dashboard' }" 
+        @click="$emit('navigate', 'dashboard')"
+      >
+        Dashboard
+      </button>
+      <button 
         :class="{ active: currentView === 'users' }" 
         @click="$emit('navigate', 'users')"
       >
@@ -21,6 +27,30 @@ defineProps({
         @click="$emit('navigate', 'customers')"
       >
         Customers
+      </button>
+      <button 
+        :class="{ active: currentView === 'accounts' }" 
+        @click="$emit('navigate', 'accounts')"
+      >
+        Accounts
+      </button>
+      <button 
+        :class="{ active: currentView === 'branches' }" 
+        @click="$emit('navigate', 'branches')"
+      >
+        Branches
+      </button>
+      <button 
+        :class="{ active: currentView === 'employees' }" 
+        @click="$emit('navigate', 'employees')"
+      >
+        Employees
+      </button>
+      <button 
+        :class="{ active: currentView === 'transactions' }" 
+        @click="$emit('navigate', 'transactions')"
+      >
+        Transactions
       </button>
     </div>
   </nav>
